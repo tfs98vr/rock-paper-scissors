@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock paper scissors</title>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+
+        <script>
+
+            function computerPlay() {
+                const myArray = ['rock', 'paper', 'scissors'];
+                const random = Math.floor(Math.random() * myArray.length);
+                return myArray[random]
+            }
+
+            let playerScore = 0;
+            let computerScore = 0;
+            
+
+            function roundPlay() {
+
+                let playerSelection = window.prompt("Let's play rock paper scissors! Make your choice!").toLowerCase();
+                let computerSelection = computerPlay();
+
+                if (playerSelection == computerSelection) {
+                    console.log("Tie. Play again!")
+                    console.log(`Player score: ${playerScore}, PC score: ${computerScore}.`)
+                } else if ((playerSelection == 'rock' && computerSelection == 'scissors') || 
+                (playerSelection == 'paper' && computerSelection == 'rock') ||
+                (playerSelection == 'scissors' && computerSelection == 'paper')) {
+                    playerScore += 1;
+                    console.log("You win! " + playerSelection + " beats " + computerSelection + "!")
+                    console.log(`Player score: ${playerScore}, PC score: ${computerScore}.`)
+                } else if ((playerSelection == 'rock' && computerSelection == 'paper') ||
+                (playerSelection == 'paper' && computerSelection == 'scissors') ||
+                (playerSelection == 'scissors' && computerSelection == 'rock')) {
+                    computerScore += 1;
+                    console.log("You lost. " + computerSelection + " beats " + playerSelection + ".")
+                    console.log(`Player score: ${playerScore}, PC score: ${computerScore}.`)
+                } else {
+                    console.log("I don't understand. Please try again.")
+                }
+            }
+
+            function game() {
+                
+                roundPlay();
+                roundPlay();
+                roundPlay();
+                roundPlay();
+                roundPlay();
+                console.log(`Final score: Player: ${playerScore}, Computer: ${computerScore}.`)
+            }
+            game();
+
+        </script>
+
+    </body>
+</html>
