@@ -1,5 +1,6 @@
 body {
     background-color: #384f7d;
+    text-align: center;
     color: white;
     font-weight: 600;
     font-family: ubuntu, 'Times New Roman', Times, serif;
@@ -7,5 +8,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.dog {
+    background-color: black;
 }
 

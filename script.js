@@ -1,4 +1,3 @@
-const x = document.body;
 let btnrock = document.getElementById('rock');
 let btnpaper = document.getElementById('paper');
 let btnscissors = document.getElementById('scissors');
@@ -8,7 +7,7 @@ let pcchoice = document.getElementById('pcchoice');
 let computerScore = 0;
 let playerScore = 0;
 let playerChoice;
-let dog = document.createElement('p');
+let finalScore = document.getElementById('finalScore');
 
 function computerPlay() {
     let choices = ['Rock', 'Paper', 'Scissors'];
@@ -16,58 +15,39 @@ function computerPlay() {
     return choices[random];
 }
 
-const playRond = function() {
+const playRound = function() {
     let play = computerPlay();
 
     if (playerChoice === play) {
         pcchoice.textContent = play;
-        textMatch.textContent = 'Tie. Try again!'
-    } else if(playerChoice === 'Rock' && play === 'Scissors') {
+        textMatch.textContent = 'Tie. Try again!';
+        result.textContent = `Player Score: ${playerScore}. Computer Score: ${computerScore}.`
+    } else if((playerChoice === 'Rock' && play === 'Scissors') ||
+              (playerChoice === 'Paper' && play === 'Rock') ||
+              (playerChoice === 'Scissors' && play === 'Paper')) {
         playerScore++
-        pcchoice.textContent = play;
-        textMatch.textContent = 'You win! Rock beats Scissors!'
+        pcchoice.textContent = `Computer choose: ${play}`
+        textMatch.textContent = `You win! ${playerChoice} beats ${play}!`
         result.textContent = `Player Score: ${playerScore}. Computer Score: ${computerScore}.`
-    } else if(playerChoice === 'Paper' && play === 'Rock') {
-        pcchoice.textContent = play;
-        playerScore++
-        textMatch.textContent = 'You win! Paper beats Rock!'
-        result.textContent = `Player Score: ${playerScore}. Computer Score: ${computerScore}.`
-    } else if(playerChoice === 'Scissors' && play === 'Paper') {
-        pcchoice.textContent = play;
-        playerScore++
-        textMatch.textContent = 'You win! Scissors beats Paper!'
-        result.textContent = `Player Score: ${playerScore}. Computer Score: ${computerScore}.`
-    } else if(playerChoice === 'Rock' && play === 'Paper') {
-        pcchoice.textContent = play;
+    } else if((playerChoice === 'Rock' && play === 'Paper') ||
+              (playerChoice === 'Paper' && play === 'Scissors') ||
+              (playerChoice === 'Scissors' && play === 'Rock')) {
+        pcchoice.textContent = `Computer choose: ${play}`
         computerScore++
-        textMatch.textContent = 'You loose. Paper beats Rock.'
-        result.textContent = `Player Score: ${playerScore}. Computer Score: ${computerScore}.`
-    } else if(playerChoice === 'Paper' && play === 'Scissors') {
-        pcchoice.textContent = play;
-        computerScore++
-        textMatch.textContent = 'You loose. Scissors beats Paper.'
-        result.textContent = `Player Score: ${playerScore}. Computer Score: ${computerScore}.`
-    } else if(playerChoice === 'Scissors' && play === 'Rock') {
-        pcchoice.textContent = play;
-        computerScore++
-        textMatch.textContent = 'You loose. Rock beats Scissors.'
+        textMatch.textContent = `You lose. ${play} beats ${playerChoice}.`
         result.textContent = `Player Score: ${playerScore}. Computer Score: ${computerScore}.`
     }
-    return;
 }
 
 const game = function() {
-    playRond();
+    playRound();
     
     if (playerScore === 5 || computerScore === 5) {
-        dog.textContent = `Final Score. Player: ${playerScore}. Computer: ${computerScore}`
-        dog.classList.add('dog');
-        x.appendChild(dog);
+        finalScore.textContent = `Final Score Player: ${playerScore}. Computer: ${computerScore}`;
         document.getElementById("rock").disabled = true;
         document.getElementById("paper").disabled = true;
         document.getElementById("scissors").disabled = true;
     }
-    return;
 }
 
 btnrock.addEventListener('click', function() {
