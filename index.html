@@ -5,20 +5,34 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
         <script src="script.js" defer></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+        </style>
     </head>
 
     <body>
+        <h1 id="title">whoever scores 5 points first wins the game!</h1>
         <div class="buttons">
-            <button type="button" id="rock">Rock</button>
-            <button type="button" id="paper">Paper</button>
-            <button type="button" id="scissors">Scissors</button>
+            <button type="button" id="rock"></button>
+            <button type="button" id="paper"></button>
+            <button type="button" id="scissors"></button>
         </div>
 
         <div class="scoreBoard">
             <p id="pcchoice"></p>
+            <div class="Result">
+                <div class="player1">
+                    <h3>Player</h3>
+                    <p id="firstPlayer"></p>
+                </div>
+                <div class="computer">
+                    <h3>Computer</h3>
+                    <p id="firstComputer"></p>
+                </div>
+            </div>
             <p id="match"></p>
-            <p id="result"></p>
-            <p id="finalScore"></p>
         </div>
+
+        <button type="reset" id="again">play again</button>
     </body>
 </html>
